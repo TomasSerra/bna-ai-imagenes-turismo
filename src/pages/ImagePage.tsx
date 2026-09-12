@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useLayoutEffect, useState } from 'react';
 import { Download, Loader2 } from 'lucide-react';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Button } from '@/components/ui/button';
@@ -111,9 +111,13 @@ export function ImagePage() {
   const [downloadFile, setDownloadFile] = useState<File | null>(null);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [downloading, setDownloading] = useState(false);
-  useEffect(() => {
+  useLayoutEffect(() => {
+    document.documentElement.classList.add('download-page');
     document.body.classList.add('allow-native-gestures');
-    return () => document.body.classList.remove('allow-native-gestures');
+    return () => {
+      document.documentElement.classList.remove('download-page');
+      document.body.classList.remove('allow-native-gestures');
+    };
   }, []);
 
   useEffect(() => {

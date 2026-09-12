@@ -77,6 +77,19 @@
        At 1920px tall → 24px (current baseline); at 3840px (4K) → 48px (2×). */
     font-size: clamp(14px, 1.25vh, 48px);
   }
+
+  /* On portrait phones the kiosk keeps the same 9:16 composition used by the
+     vertical TV, only scaled down. The desktop minimum of 14px was preventing
+     rem-based controls from shrinking enough to fit a single mobile viewport. */
+  @media (max-width: 639px) {
+    html {
+      font-size: clamp(7px, 1.25dvh, 12px);
+    }
+
+    html.download-page {
+      font-size: 14px;
+    }
+  }
   html,
   body {
     touch-action: pan-x pan-y;

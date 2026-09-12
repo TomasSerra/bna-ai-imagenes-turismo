@@ -14,12 +14,11 @@ export function OptionsForm({ value, onChange, disabled }: OptionsFormProps) {
     <div className="space-y-5">
       <section aria-labelledby="destino-label">
         <div className="mb-3 flex items-end justify-between gap-4">
-          <h3 id="destino-label" className="text-xl font-kievit-black leading-none text-white sm:text-2xl">
+          <h3 id="destino-label" className="text-2xl font-kievit-black leading-none text-white">
             Elegí tu destino
           </h3>
-          <p className="flex shrink-0 items-center gap-1 text-sm font-medium text-white/75 sm:gap-1.5 sm:text-base">
-            <MoveHorizontal aria-hidden className="size-4 sm:size-5" /> Deslizá
-            <span className="hidden sm:inline"> para explorar</span>
+          <p className="flex items-center gap-1.5 text-base font-medium text-white/75">
+            <MoveHorizontal aria-hidden className="size-5" /> Deslizá para explorar
           </p>
         </div>
         <div
@@ -43,7 +42,7 @@ export function OptionsForm({ value, onChange, disabled }: OptionsFormProps) {
                   aria-checked={selected}
                   disabled={disabled}
                   onClick={() => onChange({ ...value, destino: destino.id })}
-                  className={`group relative w-[46%] min-w-36 max-w-64 shrink-0 snap-start overflow-hidden rounded-2xl border-2 text-left shadow-lg transition-all focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#4ed8f4] disabled:pointer-events-none disabled:opacity-50 sm:w-[31%] sm:min-w-40 ${
+                  className={`group relative w-[31%] min-w-40 max-w-64 shrink-0 snap-start overflow-hidden rounded-2xl border-2 text-left shadow-lg transition-all focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#4ed8f4] disabled:pointer-events-none disabled:opacity-50 ${
                     selected
                       ? 'border-[#4ed8f4] bg-[#006da8] text-white ring-4 ring-[#4ed8f4]/35'
                       : 'border-white/55 bg-white text-[#003b70] hover:border-white'
@@ -62,7 +61,7 @@ export function OptionsForm({ value, onChange, disabled }: OptionsFormProps) {
                     )}
                   </span>
                   <span
-                    className={`flex min-h-14 items-center justify-center px-2 py-2 text-center text-base font-kievit-black leading-tight sm:min-h-16 sm:text-lg ${
+                    className={`flex min-h-16 items-center justify-center px-2 py-2 text-center text-lg font-kievit-black leading-tight ${
                       selected ? 'text-white' : 'text-[#003b70]'
                     }`}
                   >
@@ -76,7 +75,7 @@ export function OptionsForm({ value, onChange, disabled }: OptionsFormProps) {
       </section>
 
       <section aria-labelledby="estilo-label">
-        <h3 id="estilo-label" className="mb-3 text-xl font-kievit-black leading-none text-white sm:text-2xl">
+        <h3 id="estilo-label" className="mb-3 text-2xl font-kievit-black leading-none text-white">
           Elegí un estilo
         </h3>
         <div role="radiogroup" aria-labelledby="estilo-label" className="grid grid-cols-2 gap-3">
@@ -88,7 +87,7 @@ export function OptionsForm({ value, onChange, disabled }: OptionsFormProps) {
               selected={value.estilo === estilo.id}
               disabled={disabled}
               onClick={() => onChange({ ...value, estilo: estilo.id })}
-              className="h-14 w-full justify-center px-2 text-base sm:px-3 sm:text-lg"
+              className="h-14 w-full justify-center px-3 text-lg"
             />
           ))}
         </div>

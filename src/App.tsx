@@ -76,7 +76,7 @@ export function KioskApp() {
   };
 
   return (
-    <div className="relative h-dvh w-full overflow-x-hidden overflow-y-auto bg-[url('/bg-game.png')] bg-cover bg-center bg-no-repeat sm:w-dvw sm:overflow-hidden">
+    <div className="relative h-dvh w-dvw overflow-hidden bg-[url('/bg-game.png')] bg-cover bg-center bg-no-repeat">
       {page !== 'home' && (
         <div
           aria-hidden
@@ -98,7 +98,7 @@ export function KioskApp() {
         className="absolute right-0 top-0 z-40 size-24 cursor-default bg-transparent opacity-0"
       />
 
-      <main className="relative z-10 min-h-dvh w-full sm:h-full sm:min-h-0">
+      <main className="relative z-10 h-full w-full">
         {page === 'home' && <HomePage onStart={() => setPage('capture')} />}
         {page === 'capture' && (
           <CapturePage

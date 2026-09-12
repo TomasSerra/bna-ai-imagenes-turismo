@@ -48,6 +48,32 @@ afterEach(() => {
 });
 
 describe('GeneratePage', () => {
+  it('mantiene carga y resultado dentro de una pantalla fija sin scroll', async () => {
+    let resolveGeneration!: (value: {
+      blob: Blob;
+      url: string;
+    }) => void;
+    generateImageMock.mockReturnValue(
+      new Promise((resolve) => {
+        resolveGeneration = resolve;
+      }),
+    );
+
+    const { container } = render(<GeneratePage {...defaultProps} />);
+    const page = container.firstElementChild;
+
+    expect(page).toHaveClass('h-dvh', 'w-dvw', 'overflow-hidden');
+    expect(screen.getByText('Creando tu viaje')).toBeInTheDocument();
+
+    resolveGeneration({
+      blob: new Blob(['image'], { type: 'image/jpeg' }),
+      url: 'https://example.com/generated.jpg',
+    });
+
+    expect(await screen.findByText('Tu postal argentina')).toBeInTheDocument();
+    expect(page).toHaveClass('h-dvh', 'w-dvw', 'overflow-hidden');
+  });
+
   it('completa la generación y muestra las opciones de entrega', async () => {
     generateImageMock.mockResolvedValue({
       blob: new Blob(['image'], { type: 'image/jpeg' }),
