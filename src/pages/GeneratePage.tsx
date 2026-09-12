@@ -106,7 +106,7 @@ export function GeneratePage({ apiKey, photo, opciones, onBack, onDone }: Genera
   }, [phase]);
 
   return (
-    <div className="flex h-dvh w-dvw flex-col gap-4 overflow-hidden p-6 text-white">
+    <div className="flex min-h-dvh w-full flex-col gap-4 overflow-x-hidden p-4 text-white sm:h-dvh sm:w-dvw sm:overflow-hidden sm:p-6">
       {showConfetti && (
         <Confetti
           width={window.innerWidth}
@@ -143,7 +143,7 @@ export function GeneratePage({ apiKey, photo, opciones, onBack, onDone }: Genera
       </h2>
 
       <div className="flex min-h-0 flex-1 items-center justify-center">
-        <div className="relative aspect-[9/16] h-full max-h-full w-auto max-w-full overflow-hidden rounded-[2rem] border-4 border-white/90 bg-muted shadow-2xl ring-4 ring-[#36c8e8]/35">
+        <div className="relative aspect-[9/16] h-auto max-h-[68dvh] w-full max-w-md overflow-hidden rounded-[2rem] border-4 border-white/90 bg-muted shadow-2xl ring-4 ring-[#36c8e8]/35 sm:h-full sm:max-h-full sm:w-auto sm:max-w-full">
           {phase === 'generating' && (
             <>
               <img
@@ -194,15 +194,15 @@ export function GeneratePage({ apiKey, photo, opciones, onBack, onDone }: Genera
       {phase === 'done' && (
         <Button
           onClick={onDone}
-          className="h-16 w-full rounded-full border-2 border-white bg-gradient-to-r from-[#003b70] via-[#006da8] to-[#29b9dd] text-2xl font-kievit-black text-white shadow-xl hover:brightness-110 [&_svg]:size-7"
+          className="h-14 w-full rounded-full border-2 border-white bg-gradient-to-r from-[#003b70] via-[#006da8] to-[#29b9dd] text-xl font-kievit-black text-white shadow-xl hover:brightness-110 sm:h-16 sm:text-2xl [&_svg]:size-6 sm:[&_svg]:size-7"
         >
           <ThumbsUp /> Listo
         </Button>
       )}
 
       {phase === 'done' && publicUrl && (
-        <div className="flex items-center justify-center gap-6 rounded-3xl border border-white/40 bg-white/95 p-6 text-[#003b70] shadow-xl">
-          <div className="size-48 shrink-0 rounded-xl bg-white p-3 ring-2 ring-[#36c8e8]/35">
+        <div className="flex flex-col items-center justify-center gap-4 rounded-3xl border border-white/40 bg-white/95 p-4 text-center text-[#003b70] shadow-xl sm:flex-row sm:gap-6 sm:p-6 sm:text-left">
+          <div className="size-40 shrink-0 rounded-xl bg-white p-3 ring-2 ring-[#36c8e8]/35 sm:size-48">
             <QRCodeSVG
               value={`${window.location.origin}/descargar?u=${encodeURIComponent(publicUrl)}`}
               level="M"
@@ -210,8 +210,8 @@ export function GeneratePage({ apiKey, photo, opciones, onBack, onDone }: Genera
             />
           </div>
           <div className="flex min-w-0 flex-1 flex-col gap-1">
-            <p className="text-2xl font-kievit-black tracking-wide">Escaneá para llevártela</p>
-            <p className="text-lg text-[#31536c]">Apuntá la cámara de tu celular al QR</p>
+            <p className="text-xl font-kievit-black tracking-wide sm:text-2xl">Escaneá para llevártela</p>
+            <p className="text-base text-[#31536c] sm:text-lg">Apuntá la cámara de tu celular al QR</p>
             <EmailSendDialog mediaType="image" mediaUrl={publicUrl} />
           </div>
         </div>
@@ -220,7 +220,7 @@ export function GeneratePage({ apiKey, photo, opciones, onBack, onDone }: Genera
       {phase === 'error' && (
         <Button
           onClick={() => void run()}
-          className="h-16 w-full rounded-full border-2 border-white bg-gradient-to-r from-[#003b70] via-[#006da8] to-[#29b9dd] text-2xl font-kievit-black text-white shadow-xl hover:brightness-110 [&_svg]:size-7"
+          className="h-14 w-full rounded-full border-2 border-white bg-gradient-to-r from-[#003b70] via-[#006da8] to-[#29b9dd] text-xl font-kievit-black text-white shadow-xl hover:brightness-110 sm:h-16 sm:text-2xl [&_svg]:size-6 sm:[&_svg]:size-7"
         >
           <RotateCw /> Reintentar
         </Button>

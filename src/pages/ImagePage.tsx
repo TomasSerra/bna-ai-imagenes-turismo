@@ -163,7 +163,7 @@ export function ImagePage() {
   };
 
   return (
-    <div className="relative flex min-h-dvh w-dvw flex-col items-center gap-4 overflow-hidden bg-[url('/bg-game.png')] bg-cover bg-center bg-no-repeat p-4 text-white">
+    <div className="relative flex h-dvh w-full flex-col items-center gap-4 overflow-x-hidden overflow-y-auto bg-[url('/bg-game.png')] bg-cover bg-center bg-no-repeat p-4 text-white">
       <div
         aria-hidden
         className="pointer-events-none fixed inset-0 bg-[linear-gradient(180deg,rgba(0,42,78,0.68),rgba(0,28,58,0.84))]"
@@ -205,7 +205,7 @@ export function ImagePage() {
             <Button
               onClick={handleDownload}
               disabled={downloading || !downloadFile}
-              className="h-20 w-[90%] gap-4 rounded-full border-2 border-white bg-gradient-to-r from-[#003b70] via-[#006da8] to-[#29b9dd] text-3xl font-kievit-black text-white shadow-xl hover:brightness-110 [&_svg]:size-8"
+              className="h-16 w-full gap-3 rounded-full border-2 border-white bg-gradient-to-r from-[#003b70] via-[#006da8] to-[#29b9dd] text-2xl font-kievit-black text-white shadow-xl hover:brightness-110 sm:h-20 sm:w-[90%] sm:gap-4 sm:text-3xl [&_svg]:size-7 sm:[&_svg]:size-8"
             >
               {downloading ? (
                 <>
@@ -217,7 +217,7 @@ export function ImagePage() {
                 </>
               )}
             </Button>
-            <p className="pb-4 text-center text-xl text-white">
+            <p className="pb-4 text-center text-lg text-white sm:text-xl">
               También podés <strong>mantener apretada</strong> la imagen
               <br />y guardarla en tus fotos.
             </p>
