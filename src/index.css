@@ -153,3 +153,20 @@
   min-height: 100vh;
   min-height: 100dvh;
 }
+
+/* Phone controls rely on fill and shadow for separation; a white stroke makes
+   the compact layout look visually noisy. Selection feedback is handled by
+   the filled state and the checkmark rather than an outline. */
+@media (max-width: 639px) {
+  button[class*='border-white'] {
+    border-color: transparent;
+  }
+
+  /* Let the gradient continue beyond the pill's rounded ends. Otherwise its
+     endpoint colors land directly on the curved sides and look abruptly cut
+     off on the wider, short mobile controls. */
+  button[class*='bg-gradient-to-r'] {
+    background-position: center;
+    background-size: 140% 100%;
+  }
+}

@@ -3,8 +3,10 @@ import type { EstiloId, OpcionesGeneracion } from '@/types';
 
 export interface BuiltPrompt {
   prompt: string;
-  extraReferenceUrl: null;
+  extraReferenceUrl: string | null;
 }
+
+const CAMINITO_REFERENCE_URL = '/destinos/caminito-reference.jpg';
 
 const STYLIZED_LABELS: Record<EstiloId, string> = {
   pixar: 'polished 3D animated',
@@ -31,6 +33,11 @@ export function buildPrompt(opciones: OpcionesGeneracion): BuiltPrompt {
     `WARDROBE: Dress the person as a contemporary traveler in tasteful, unbranded clothing appropriate for the selected destination, activity and weather.`,
     `SETTING: ${destino.en}.`,
     `SELECTED DESTINATION VARIANT: ${variante.en}. Render only this selected catalog variant; do not mix in props, animals, activities or landmarks from the destination's other variants. Integrate every element naturally with consistent perspective, scale, lighting and shadows.`,
+    ...(variante.id === 'caminito'
+      ? [
+          `CAMINITO SCENE REFERENCE: The second supplied image is an authoritative visual reference for the setting only, never for the person's identity. Recreate the real Caminito in La Boca from its visual language: a narrow pedestrian cobblestone passage framed by tightly packed, tall corrugated-metal conventillo façades painted in saturated turquoise, yellow, red, blue and green; intricate wrought-iron balconies; street art and framed paintings; layered balconies and façades that create a dense, distinctly porteño streetscape. Do not substitute generic colorful suburban homes, detached houses, ordinary residential streets or simplified colorful buildings.`,
+        ]
+      : []),
     ...(destino.id === 'mendoza'
       ? [
           `MENDOZA PROP RESTRICTION: The person must not hold a wine glass, tasting glass, goblet, bottle, cup or any alcoholic drink. Do not add any beverage to their hands under any circumstances; pose their hands naturally for the selected activity instead.`,
@@ -45,5 +52,8 @@ export function buildPrompt(opciones: OpcionesGeneracion): BuiltPrompt {
     `OUTPUT: Render every pixel, including the person, selected variant and destination, in the same ${stylizedLabel} style. Fill the full frame with scene content. Produce one finished image with no blank paper, white margins, vignette, captions, visible words, logos or commercial marks.`,
   ];
 
-  return { prompt: lines.join(' '), extraReferenceUrl: null };
+  return {
+    prompt: lines.join(' '),
+    extraReferenceUrl: variante.id === 'caminito' ? CAMINITO_REFERENCE_URL : null,
+  };
 }

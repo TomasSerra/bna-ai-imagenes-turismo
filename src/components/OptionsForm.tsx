@@ -42,10 +42,10 @@ export function OptionsForm({ value, onChange, disabled }: OptionsFormProps) {
                   aria-checked={selected}
                   disabled={disabled}
                   onClick={() => onChange({ ...value, destino: destino.id })}
-                  className={`group relative w-[31%] min-w-40 max-w-64 shrink-0 snap-start overflow-hidden rounded-2xl border-2 text-left shadow-lg transition-all focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#4ed8f4] disabled:pointer-events-none disabled:opacity-50 ${
+                  className={`group relative w-[31%] min-w-40 max-w-64 shrink-0 snap-start overflow-hidden rounded-2xl border-2 text-left shadow-lg transition-all focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#4ed8f4] max-sm:border-0 max-sm:focus-visible:ring-0 disabled:pointer-events-none disabled:opacity-50 ${
                     selected
-                      ? 'border-[#4ed8f4] bg-[#006da8] text-white ring-4 ring-[#4ed8f4]/35'
-                      : 'border-white/55 bg-white text-[#003b70] hover:border-white'
+                      ? 'border-[#4ed8f4] bg-[#006da8] text-white ring-4 ring-[#4ed8f4]/35 max-sm:ring-0'
+                      : 'border-white/55 bg-white text-[#003b70] hover:border-white max-sm:border-0'
                   }`}
                 >
                   <span className="relative block aspect-square overflow-hidden bg-[radial-gradient(circle_at_30%_20%,#52d8f2_0%,#0c79b7_46%,#003b70_100%)]">

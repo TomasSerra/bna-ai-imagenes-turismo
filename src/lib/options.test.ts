@@ -114,7 +114,7 @@ describe('prompt turístico', () => {
           expect(prompt).toContain(variante.en);
           expect(prompt).toContain('Render only this selected catalog variant');
           expect(prompt).not.toContain('exactly one regional surprise');
-          expect(extraReferenceUrl).toBeNull();
+          expect(extraReferenceUrl).toBe(variante.id === 'caminito' ? '/destinos/caminito-reference.jpg' : null);
           combinations += 1;
         }
       }
@@ -176,6 +176,20 @@ describe('prompt turístico', () => {
     expect(mendoza.variantes[2].en).toMatch(
       /white-water raft.*Mendoza River.*Potrerillos.*helmet.*life jacket/,
     );
+  });
+
+  it('usa la foto del Caminito como referencia exclusiva del escenario', () => {
+    const { prompt, extraReferenceUrl } = buildPrompt({
+      destino: 'buenos-aires',
+      estilo: 'pixar',
+      variante: 'caminito',
+    });
+
+    expect(extraReferenceUrl).toBe('/destinos/caminito-reference.jpg');
+    expect(prompt).toContain('CAMINITO SCENE REFERENCE');
+    expect(prompt).toContain('second supplied image');
+    expect(prompt).toContain('corrugated-metal conventillo façades');
+    expect(prompt).toContain('generic colorful suburban homes');
   });
 
   it('prioriza la identidad facial y evita bebidas en las manos para Mendoza', () => {

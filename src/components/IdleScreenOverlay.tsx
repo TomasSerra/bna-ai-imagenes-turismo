@@ -52,7 +52,11 @@ export function IdleScreenOverlay() {
     >
       <span className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,47,91,0.72),rgba(0,31,65,0.24)_45%,rgba(0,23,48,0.82))]" />
       <span className="relative flex h-full w-full flex-col items-center justify-between px-8 pb-[8dvh] pt-[4dvh]">
-        <img src="/logo-bna.png" alt="Banco Nación" className="w-[min(72vw,400px)] drop-shadow-xl" />
+        <img
+          src="/logo-bna.png"
+          alt="Banco Nación"
+          className="w-[min(72vw,400px)] max-sm:w-[38vw] drop-shadow-xl"
+        />
         <span className="flex w-[82%] max-w-2xl items-center justify-center gap-4 rounded-full border-2 border-white bg-white px-10 py-6 text-4xl font-kievit-black text-[#003b70] shadow-2xl">
           <Hand className="size-9" />
           Tocá para comenzar

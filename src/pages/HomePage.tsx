@@ -16,7 +16,7 @@ export function HomePage({ onStart }: HomePageProps) {
         <img
           src="/logo-bna.png"
           alt="Banco Nación"
-          className="w-[min(72vw,400px)] drop-shadow-[0_4px_18px_rgba(0,29,61,0.45)]"
+          className="w-[min(72vw,400px)] max-sm:w-[38vw] drop-shadow-[0_4px_18px_rgba(0,29,61,0.45)]"
         />
         <h1 className="mt-7 text-center text-7xl font-kievit-black leading-[0.92] text-white drop-shadow-[0_6px_20px_rgba(0,31,62,0.58)]">
           ¡Descubrí

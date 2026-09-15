@@ -1,4 +1,4 @@
-// Cliente de imagen para nano-banana/edit.
+// Cliente de imagen para nano-banana-2/edit.
 
 import {
   GenerationServiceError,
@@ -8,7 +8,7 @@ import {
   stringifyGenerationPayload,
 } from '@/lib/errors';
 
-const APP_NAMESPACE = 'fal-ai/nano-banana';
+const APP_NAMESPACE = 'fal-ai/nano-banana-2';
 const MODEL_PATH = 'edit';
 
 const SUBMIT_URL = `https://queue.fal.run/${APP_NAMESPACE}/${MODEL_PATH}`;

@@ -6,7 +6,7 @@ Aplicación standalone para kiosco vertical de Banco Nación. La persona se saca
 
 - Vite, React y TypeScript
 - Tailwind CSS y componentes Radix
-- fal.ai Queue API (`fal-ai/nano-banana/edit`)
+- fal.ai Queue API (`fal-ai/nano-banana-2/edit`)
 - PWA fullscreen en orientación vertical
 - Vercel Functions y Brevo para envío por email
 

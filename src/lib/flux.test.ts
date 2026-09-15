@@ -41,6 +41,9 @@ describe('generateImage', () => {
     const submitInit = fetchMock.mock.calls[0][1];
     const submitBody = JSON.parse(String(submitInit?.body)) as { image_urls: string[] };
 
+    expect(fetchMock.mock.calls[0][0]).toBe(
+      'https://queue.fal.run/fal-ai/nano-banana-2/edit',
+    );
     expect(submitBody.image_urls).toEqual(['data:image/jpeg;base64,selfie-base64']);
   });
 });
