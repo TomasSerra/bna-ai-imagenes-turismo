@@ -27,7 +27,7 @@ const STATUS_MESSAGES = [
   'Sumando una variante del destino…',
   'Pintando cada rincón del paisaje…',
   'Dándole magia al viaje…',
-  'Preparando tu postal argentina…',
+  'Preparando tu foto soñada…',
   'Casi listo, último retoque…',
 ] as const;
 
@@ -139,7 +139,7 @@ export function GeneratePage({ apiKey, photo, opciones, onBack, onDone }: Genera
       </header>
 
       <h2 className="shrink-0 text-center text-3xl font-kievit-black tracking-wide text-white drop-shadow-md">
-        {phase === 'generating' ? 'Creando tu viaje' : 'Tu postal argentina'}
+        {phase === 'generating' ? 'Creando tu viaje' : 'Tu foto soñada'}
       </h2>
 
       <div className="flex min-h-0 flex-1 items-center justify-center">

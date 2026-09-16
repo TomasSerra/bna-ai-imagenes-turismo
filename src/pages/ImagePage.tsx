@@ -4,7 +4,7 @@ import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Button } from '@/components/ui/button';
 
 const WATERMARK = {
-  text: 'Descubrí Argentina con',
+  text: 'Viajá por Argentina',
   textSizePct: 0.042,
   logoHeightMultiplier: 1.5,
   bottomMarginPct: 0.025,
@@ -156,7 +156,7 @@ export function ImagePage() {
 
     if (nav.canShare?.({ files: [downloadFile] }) && nav.share) {
       nav
-        .share({ files: [downloadFile], title: 'Mi postal de Argentina' })
+        .share({ files: [downloadFile], title: 'Mi foto soñada en Argentina' })
         .catch(() => fallbackDownload(downloadFile))
         .finally(() => setDownloading(false));
       return;
@@ -174,7 +174,7 @@ export function ImagePage() {
       />
       <div className="relative z-10 flex w-full max-w-3xl flex-col items-center gap-4">
         <img src="/logo-bna.png" alt="Banco Nación" className="mt-2 h-12 w-auto drop-shadow-md" />
-        <h1 className="text-center text-3xl font-kievit-black">Tu postal argentina</h1>
+        <h1 className="text-center text-3xl font-kievit-black">Tu foto soñada</h1>
 
         {errorMsg && (
           <Alert variant="destructive" className="max-w-md bg-white">

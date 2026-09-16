@@ -6,6 +6,7 @@ import {
   Grape,
   Laugh,
   MapPinned,
+  Mountain,
   MountainSnow,
   Palmtree,
   Snowflake,
@@ -66,24 +67,21 @@ export const DESTINOS: readonly DestinoOption[] = [
   {
     id: 'perito-moreno',
     label: 'Glaciar Perito Moreno',
-    en: 'at the Perito Moreno Glacier in Los Glaciares National Park, Argentina, with immense blue ice walls, fractured glacier textures, turquoise water and rugged Patagonian mountains filling the scene',
+    en: 'doing a guided mini-trekking excursion on the ice of the Perito Moreno Glacier in Los Glaciares National Park, Argentina, with immense blue ice walls, fractured glacier textures, turquoise crevasses and rugged Patagonian mountains filling the scene',
     imageSrc: '/destinos/glaciar.jpg',
     icon: Snowflake,
     variantes: [
       {
-        id: 'condor',
-        en: 'an Andean condor poses on a nearby rock with its wings partially spread and its head turned toward the camera',
-        animal: true,
+        id: 'campera',
+        en: 'the person wears a clearly visible warm insulated winter jacket suitable for trekking on glacier ice',
       },
       {
-        id: 'guanaco',
-        en: "a calm guanaco stands beside the person on a rocky overlook and bends its long neck toward the person's shoulder to join the portrait",
-        animal: true,
+        id: 'bufanda',
+        en: "the person wears a warm knitted scarf wrapped naturally around their neck without covering any part of the person's face",
       },
       {
-        id: 'zorro-colorado',
-        en: "a curious Patagonian red fox sits safely beside the person, tilts its head toward the camera and gently rests one front paw near the person's boot",
-        animal: true,
+        id: 'gorro-lana',
+        en: "the person wears a warm wool beanie that leaves the person's complete face, eyes and eyebrows clearly visible",
       },
     ],
   },
@@ -165,21 +163,46 @@ export const DESTINOS: readonly DestinoOption[] = [
   {
     id: 'mendoza',
     label: 'Mendoza',
-    en: 'in Mendoza, Argentina, with the sunlit Andes establishing a distinctive Cuyo travel setting and a warm, premium tourism-postcard atmosphere',
+    en: 'in Mendoza, Argentina, with the sunlit Andes rising behind orderly vineyards and silvery-green olive groves, creating a distinctive Cuyo travel setting and a warm, premium tourism atmosphere',
     imageSrc: '/destinos/mendoza.jpg',
     icon: Grape,
     variantes: [
       {
-        id: 'vinedo',
-        en: 'the person walks between orderly rows of healthy grapevines in a Mendoza vineyard and gently touches the leaves of one vine, with the Andes visible beyond the fields',
+        id: 'racimo-uvas',
+        en: 'the person naturally presents a fresh, abundant bunch of Mendoza grapes, with every grape clearly visible',
       },
       {
-        id: 'bodega',
-        en: 'the person visits an elegant working Mendoza winery, surrounded by authentic oak aging barrels and discreet winemaking equipment in a warm, atmospheric cellar',
+        id: 'aceituna',
+        en: 'a small rustic bowl of fresh Mendoza olives and a leafy olive sprig are placed prominently and naturally beside the person',
       },
       {
-        id: 'rafting',
-        en: 'the person actively rides in a white-water raft on the Mendoza River near Potrerillos, wearing a secured helmet and life jacket, with splashing water and rugged Andean mountains around the raft',
+        id: 'mate-mendoza',
+        en: 'the person naturally holds a traditional Argentine mate gourd with its metal bombilla clearly visible',
+      },
+    ],
+  },
+  {
+    id: 'cordoba',
+    label: 'Córdoba',
+    en: 'in Córdoba, Argentina, surrounded by the green Córdoba sierras near Villa Carlos Paz, with clear mountain rivers and a scenic waterfall visible in the landscape under bright natural light',
+    imageSrc: '/destinos/cordoba.jpg',
+    icon: Mountain,
+    variantes: [
+      {
+        id: 'mate-cordoba',
+        en: 'the person naturally holds a traditional Argentine mate gourd with its metal bombilla clearly visible',
+      },
+      {
+        id: 'salame-cordobes',
+        en: 'an artisanal Córdoba salami is presented naturally on a rustic wooden board beside the person',
+      },
+      {
+        id: 'queso-cordobes',
+        en: 'a wheel and freshly cut slices of artisanal Córdoba cheese are presented naturally on a rustic wooden board beside the person',
+      },
+      {
+        id: 'alfajores-cordobeses',
+        en: 'the person presents a small assortment of traditional Córdoba alfajores, with their round shape and fillings clearly visible',
       },
     ],
   },

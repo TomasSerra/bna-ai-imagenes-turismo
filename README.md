@@ -1,6 +1,6 @@
 # BNA — Turismo Argentino con IA
 
-Aplicación standalone para kiosco vertical de Banco Nación. La persona se saca una selfie, elige un destino argentino y un estilo ilustrado, y recibe una postal 9:16 generada con IA. Cada destino agrega al azar una de sus variantes regionales.
+Aplicación standalone para kiosco vertical de Banco Nación. La persona se saca una selfie, elige uno de ocho destinos argentinos y un estilo ilustrado, y recibe una foto soñada 9:16 generada con IA. Cada destino agrega al azar una de sus variantes regionales.
 
 ## Stack
 
@@ -43,7 +43,7 @@ Si no se configura un template, el endpoint envía un email HTML simple con un e
 
 ## Miniaturas de destinos
 
-Las siete tarjetas muestran placeholders hasta recibir las imágenes finales. Para reemplazarlas:
+Las ocho tarjetas muestran una imagen representativa de cada destino. Para reemplazar alguna:
 
 1. Guardá los assets cuadrados en `public/destinos/`.
 2. En `src/lib/options.ts`, asigná su ruta pública en `imageSrc`, por ejemplo `'/destinos/cataratas.webp'`.
@@ -52,6 +52,6 @@ No es necesario modificar el componente de selección.
 
 ## Entrega de la imagen
 
-El resultado se muestra en el kiosco y expone un QR hacia `/descargar?u=...`. La página móvil prepara un JPEG con el texto “Descubrí Argentina con” y el logo BNA. Usa Web Share cuando está disponible y descarga directa como fallback.
+El resultado se muestra en el kiosco y expone un QR hacia `/descargar?u=...`. La página móvil prepara un JPEG con el texto “Viajá por Argentina” y el logo BNA. Usa Web Share cuando está disponible y descarga directa como fallback.
 
 Las URLs originales de fal.ai son temporales; la descarga debe realizarse mientras la URL siga vigente.

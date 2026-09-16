@@ -55,9 +55,9 @@ function getEmailContent(downloadUrl: string) {
   return {
     subject: 'Tu imagen de Turismo Argentino',
     mediaLabel: 'imagen',
-    textContent: `Tu postal argentina está lista. Descargala desde ${downloadUrl}`,
+    textContent: `Tu foto soñada está lista. Descargala desde ${downloadUrl}`,
     htmlContent:
-      `<p>Tu postal de <strong>Turismo Argentino</strong> está lista.</p><p><a href="${safeDownloadUrl}">Descargar mi imagen</a></p>`,
+      `<p>Tu foto soñada de <strong>Turismo Argentino</strong> está lista.</p><p><a href="${safeDownloadUrl}">Descargar mi imagen</a></p>`,
   };
 }
 

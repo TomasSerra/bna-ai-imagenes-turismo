@@ -6,9 +6,6 @@ const EXPECTED_ANIMAL_VARIANTS = [
   'coati',
   'tucan',
   'mono-cai',
-  'condor',
-  'guanaco',
-  'zorro-colorado',
   'san-bernardo',
   'llama',
   'pinguino',
@@ -16,9 +13,9 @@ const EXPECTED_ANIMAL_VARIANTS = [
 ] as const;
 
 describe('catálogo turístico', () => {
-  it('define siete destinos y veinte variantes globalmente únicas', () => {
-    expect(DESTINOS).toHaveLength(7);
-    expect(new Set(DESTINOS.map((destino) => destino.id)).size).toBe(7);
+  it('define ocho destinos y veinticuatro variantes globalmente únicas', () => {
+    expect(DESTINOS).toHaveLength(8);
+    expect(new Set(DESTINOS.map((destino) => destino.id)).size).toBe(8);
 
     const variantIds = DESTINOS.flatMap((destino) => {
       expect(destino.variantes.length).toBeGreaterThan(0);
@@ -28,13 +25,14 @@ describe('catálogo turístico', () => {
       return destino.variantes.map((variante) => variante.id);
     });
 
-    expect(variantIds).toHaveLength(20);
-    expect(new Set(variantIds).size).toBe(20);
+    expect(variantIds).toHaveLength(24);
+    expect(new Set(variantIds).size).toBe(24);
   });
 
-  it('ofrece dos variantes para Buenos Aires y tres para los demás destinos', () => {
+  it('ofrece dos variantes para Buenos Aires, cuatro para Córdoba y tres para los demás', () => {
     for (const destino of DESTINOS) {
-      expect(destino.variantes).toHaveLength(destino.id === 'buenos-aires' ? 2 : 3);
+      const expectedLength = destino.id === 'buenos-aires' ? 2 : destino.id === 'cordoba' ? 4 : 3;
+      expect(destino.variantes).toHaveLength(expectedLength);
     }
   });
 
@@ -57,7 +55,9 @@ describe('catálogo turístico', () => {
     const buenosAires = getDestino('buenos-aires');
     const cataratas = getDestino('cataratas');
     const bariloche = getDestino('bariloche');
+    const glaciar = getDestino('perito-moreno');
     const mendoza = getDestino('mendoza');
+    const cordoba = getDestino('cordoba');
     const allVariantIds = DESTINOS.flatMap((destino) =>
       destino.variantes.map((variante) => variante.id),
     );
@@ -78,16 +78,34 @@ describe('catálogo turístico', () => {
       'chocolate',
     ]);
     expect(mendoza.variantes.map((variante) => variante.id)).toEqual([
-      'vinedo',
-      'bodega',
-      'rafting',
+      'racimo-uvas',
+      'aceituna',
+      'mate-mendoza',
+    ]);
+    expect(glaciar.variantes.map((variante) => variante.id)).toEqual([
+      'campera',
+      'bufanda',
+      'gorro-lana',
+    ]);
+    expect(cordoba.variantes.map((variante) => variante.id)).toEqual([
+      'mate-cordoba',
+      'salame-cordobes',
+      'queso-cordobes',
+      'alfajores-cordobeses',
     ]);
     expect(allVariantIds).not.toEqual(
-      expect.arrayContaining(['mariposas', 'bandoneon', 'tango', 'taxi-porteno', 'equipo-esqui']),
+      expect.arrayContaining([
+        'condor',
+        'guanaco',
+        'zorro-colorado',
+        'vinedo',
+        'bodega',
+        'rafting',
+      ]),
     );
   });
 
-  it('marca exactamente las diez variantes con animales', () => {
+  it('marca exactamente las siete variantes con animales', () => {
     const animalIds = DESTINOS.flatMap((destino) =>
       destino.variantes.filter((variante) => variante.animal).map((variante) => variante.id),
     );
@@ -97,7 +115,7 @@ describe('catálogo turístico', () => {
 });
 
 describe('prompt turístico', () => {
-  it('construye las 80 combinaciones variante/estilo', () => {
+  it('construye las 96 combinaciones variante/estilo', () => {
     let combinations = 0;
 
     for (const destino of DESTINOS) {
@@ -120,7 +138,7 @@ describe('prompt turístico', () => {
       }
     }
 
-    expect(combinations).toBe(80);
+    expect(combinations).toBe(96);
   });
 
   it('agrega reglas de pose divertida y anatomía natural a todos los animales', () => {
@@ -165,16 +183,21 @@ describe('prompt turístico', () => {
     expect(chocolatePrompt).toMatch(/chocolates and bonbons clearly visible/);
   });
 
-  it('describe las dos escenas porteñas y las tres actividades mendocinas', () => {
+  it('describe las escenas porteñas y los nuevos paisajes y elementos regionales', () => {
     const buenosAires = getDestino('buenos-aires');
+    const glaciar = getDestino('perito-moreno');
     const mendoza = getDestino('mendoza');
+    const cordoba = getDestino('cordoba');
 
     expect(buenosAires.variantes[0].en).toMatch(/Avenida 9 de Julio.*Obelisco/);
     expect(buenosAires.variantes[1].en).toMatch(/Caminito.*La Boca.*multicolored/);
-    expect(mendoza.variantes[0].en).toMatch(/walks.*grapevines.*touches/);
-    expect(mendoza.variantes[1].en).toMatch(/winery.*oak aging barrels/);
-    expect(mendoza.variantes[2].en).toMatch(
-      /white-water raft.*Mendoza River.*Potrerillos.*helmet.*life jacket/,
+    expect(glaciar.en).toMatch(/mini-trekking.*Perito Moreno Glacier/);
+    expect(glaciar.variantes.map((item) => item.en).join(' ')).toMatch(/jacket.*scarf.*wool beanie/);
+    expect(mendoza.en).toMatch(/Andes.*vineyards.*olive groves/);
+    expect(mendoza.variantes.map((item) => item.en).join(' ')).toMatch(/grapes.*olives.*mate/);
+    expect(cordoba.en).toMatch(/sierras.*Villa Carlos Paz.*rivers.*waterfall/);
+    expect(cordoba.variantes.map((item) => item.en).join(' ')).toMatch(
+      /mate.*salami.*cheese.*alfajores/,
     );
   });
 
@@ -192,11 +215,16 @@ describe('prompt turístico', () => {
     expect(prompt).toContain('generic colorful suburban homes');
   });
 
-  it('prioriza la identidad facial y evita bebidas en las manos para Mendoza', () => {
+  it('prioriza la identidad facial, elimina animales del Glaciar y alcohol de Mendoza', () => {
     const mendozaPrompt = buildPrompt({
       destino: 'mendoza',
       estilo: 'pixar',
-      variante: 'bodega',
+      variante: 'mate-mendoza',
+    }).prompt;
+    const glaciarPrompt = buildPrompt({
+      destino: 'perito-moreno',
+      estilo: 'pixar',
+      variante: 'campera',
     }).prompt;
     const cataratasPrompt = buildPrompt({
       destino: 'cataratas',
@@ -208,14 +236,17 @@ describe('prompt turístico', () => {
     expect(mendozaPrompt).toContain('IDENTITY — HIGHEST PRIORITY');
     expect(mendozaPrompt).toContain('Do not beautify, idealize, age, de-age');
     expect(mendozaPrompt).toContain('Keep the person\'s face large, detailed');
-    expect(mendozaPrompt).toContain('The person must not hold a wine glass');
-    expect(mendozaPrompt).toContain('Do not add any beverage to their hands');
+    expect(mendozaPrompt).toContain('Do not add wine');
+    expect(mendozaPrompt).toContain('mate gourd is required');
+    expect(mendozaPrompt).not.toMatch(/white-water raft|Mendoza River near Potrerillos/);
+    expect(glaciarPrompt).toContain('Do not add any animals or birds');
+    expect(glaciarPrompt).toContain('condors, eagles, guanacos or Patagonian red foxes');
     expect(cataratasPrompt).not.toContain('MENDOZA PROP RESTRICTION');
   });
 
   it('rechaza una variante que no pertenece al destino', () => {
     expect(() =>
-      buildPrompt({ destino: 'cataratas', estilo: 'pixar', variante: 'condor' }),
+      buildPrompt({ destino: 'cataratas', estilo: 'pixar', variante: 'campera' }),
     ).toThrow('no pertenece');
   });
 });

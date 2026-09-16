@@ -7,15 +7,16 @@ export type DestinoId =
   | 'bariloche'
   | 'humahuaca'
   | 'ushuaia'
-  | 'mendoza';
+  | 'mendoza'
+  | 'cordoba';
 
 export type VarianteId =
   | 'coati'
   | 'tucan'
   | 'mono-cai'
-  | 'condor'
-  | 'guanaco'
-  | 'zorro-colorado'
+  | 'campera'
+  | 'bufanda'
+  | 'gorro-lana'
   | 'obelisco'
   | 'caminito'
   | 'san-bernardo'
@@ -27,9 +28,13 @@ export type VarianteId =
   | 'pinguino'
   | 'lobo-marino'
   | 'faro-les-eclaireurs'
-  | 'vinedo'
-  | 'bodega'
-  | 'rafting';
+  | 'racimo-uvas'
+  | 'aceituna'
+  | 'mate-mendoza'
+  | 'mate-cordoba'
+  | 'salame-cordobes'
+  | 'queso-cordobes'
+  | 'alfajores-cordobeses';
 
 export interface Opciones {
   destino: DestinoId;

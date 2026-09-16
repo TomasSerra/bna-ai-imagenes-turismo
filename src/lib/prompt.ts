@@ -40,7 +40,12 @@ export function buildPrompt(opciones: OpcionesGeneracion): BuiltPrompt {
       : []),
     ...(destino.id === 'mendoza'
       ? [
-          `MENDOZA PROP RESTRICTION: The person must not hold a wine glass, tasting glass, goblet, bottle, cup or any alcoholic drink. Do not add any beverage to their hands under any circumstances; pose their hands naturally for the selected activity instead.`,
+          `MENDOZA PROP RESTRICTION: Do not add wine, wine glasses, tasting glasses, alcoholic bottles or any alcoholic drink. A traditional mate gourd is required only when the selected variant is mate-mendoza and is explicitly allowed because it is non-alcoholic; otherwise do not add beverages.`,
+        ]
+      : []),
+    ...(destino.id === 'perito-moreno'
+      ? [
+          `PERITO MORENO RESTRICTION: Do not add any animals or birds to the scene, including condors, eagles, guanacos or Patagonian red foxes.`,
         ]
       : []),
     ...(variante.animal
@@ -48,7 +53,7 @@ export function buildPrompt(opciones: OpcionesGeneracion): BuiltPrompt {
           `ANIMAL INTERACTION: Keep the animal's authentic species anatomy, proportions and natural movement while giving it the playful, camera-aware pose and friendly interaction described above. Keep the person's entire face visible. The animal remains an animal and does not wear human clothing.`,
         ]
       : []),
-    `COMPOSITION: Create a vertical 9:16 travel portrait with the person as the clear focal point. Use the closest framing that still shows the selected interaction and its essential context, including any animal, snowboard, open chocolate box, raft or landmark. Keep the person's face large, detailed and easy to compare with the reference; prefer a front-facing or gentle three-quarter facial angle and avoid distant, profile or extreme-angle views. Use background depth to show the destination clearly without crowding the subject.`,
+    `COMPOSITION: Create a vertical 9:16 travel portrait with the person as the clear focal point. Use the closest framing that still shows the selected regional element or interaction and its essential destination context. Keep the person's face large, detailed and easy to compare with the reference; prefer a front-facing or gentle three-quarter facial angle and avoid distant, profile or extreme-angle views. Use background depth to show the destination clearly without crowding the subject.`,
     `OUTPUT: Render every pixel, including the person, selected variant and destination, in the same ${stylizedLabel} style. Fill the full frame with scene content. Produce one finished image with no blank paper, white margins, vignette, captions, visible words, logos or commercial marks.`,
   ];
 

@@ -70,7 +70,7 @@ describe('GeneratePage', () => {
       url: 'https://example.com/generated.jpg',
     });
 
-    expect(await screen.findByText('Tu postal argentina')).toBeInTheDocument();
+    expect(await screen.findByText('Tu foto soñada')).toBeInTheDocument();
     expect(page).toHaveClass('h-dvh', 'w-dvw', 'overflow-hidden');
   });
 
