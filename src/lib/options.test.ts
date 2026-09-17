@@ -16,6 +16,7 @@ describe('catálogo turístico', () => {
   it('define ocho destinos y veinticuatro variantes globalmente únicas', () => {
     expect(DESTINOS).toHaveLength(8);
     expect(new Set(DESTINOS.map((destino) => destino.id)).size).toBe(8);
+    expect(DESTINOS.every((destino) => destino.imageSrc.endsWith('.webp'))).toBe(true);
 
     const variantIds = DESTINOS.flatMap((destino) => {
       expect(destino.variantes.length).toBeGreaterThan(0);

@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { Check, MoveHorizontal } from 'lucide-react';
 import { Chip } from '@/components/ui/chip';
 import { DESTINOS, ESTILOS } from '@/lib/options';
@@ -7,6 +8,52 @@ interface OptionsFormProps {
   value: Opciones;
   onChange: (next: Opciones) => void;
   disabled?: boolean;
+}
+
+const THUMBNAIL_LOAD_TIMEOUT_MS = 8_000;
+
+function DestinationThumbnail({ src }: { src: string }) {
+  const [attempt, setAttempt] = useState(0);
+  const [status, setStatus] = useState<'loading' | 'loaded' | 'failed'>('loading');
+
+  const retryOrFail = () => {
+    if (attempt === 0) {
+      setAttempt(1);
+      return;
+    }
+
+    setStatus('failed');
+  };
+
+  useEffect(() => {
+    if (status !== 'loading') return;
+
+    const timeout = window.setTimeout(() => {
+      if (attempt === 0) {
+        setAttempt(1);
+        return;
+      }
+
+      setStatus('failed');
+    }, THUMBNAIL_LOAD_TIMEOUT_MS);
+    return () => window.clearTimeout(timeout);
+  }, [attempt, status]);
+
+  if (status === 'failed') return null;
+
+  return (
+    <img
+      key={attempt}
+      src={src}
+      alt=""
+      decoding="async"
+      onLoad={() => setStatus('loaded')}
+      onError={retryOrFail}
+      className={`size-full object-cover transition-opacity duration-200 group-hover:scale-105 ${
+        status === 'loaded' ? 'opacity-100' : 'opacity-0'
+      }`}
+    />
+  );
 }
 
 export function OptionsForm({ value, onChange, disabled }: OptionsFormProps) {
@@ -49,11 +96,7 @@ export function OptionsForm({ value, onChange, disabled }: OptionsFormProps) {
                   }`}
                 >
                   <span className="relative block aspect-square overflow-hidden bg-[radial-gradient(circle_at_30%_20%,#52d8f2_0%,#0c79b7_46%,#003b70_100%)]">
-                    <img
-                      src={destino.imageSrc}
-                      alt=""
-                      className="size-full object-cover transition-transform duration-300 group-hover:scale-105"
-                    />
+                    <DestinationThumbnail src={destino.imageSrc} />
                     {selected && (
                       <span className="absolute right-2 top-2 flex size-8 items-center justify-center rounded-full bg-white text-[#006da8] shadow-md">
                         <Check className="size-5 stroke-[3]" />

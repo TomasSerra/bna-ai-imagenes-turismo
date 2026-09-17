@@ -44,7 +44,7 @@ export const DESTINOS: readonly DestinoOption[] = [
     id: 'cataratas',
     label: 'Cataratas del Iguazú',
     en: 'at the iconic Iguazú Falls in Misiones, Argentina, surrounded by lush subtropical rainforest, powerful cascades and fine mist catching warm sunlight; the waterfalls and jungle fill the entire frame',
-    imageSrc: '/destinos/cataratas.jpg',
+    imageSrc: '/destinos/cataratas.webp',
     icon: Palmtree,
     variantes: [
       {
@@ -68,7 +68,7 @@ export const DESTINOS: readonly DestinoOption[] = [
     id: 'perito-moreno',
     label: 'Glaciar Perito Moreno',
     en: 'doing a guided mini-trekking excursion on the ice of the Perito Moreno Glacier in Los Glaciares National Park, Argentina, with immense blue ice walls, fractured glacier textures, turquoise crevasses and rugged Patagonian mountains filling the scene',
-    imageSrc: '/destinos/glaciar.jpg',
+    imageSrc: '/destinos/glaciar.webp',
     icon: Snowflake,
     variantes: [
       {
@@ -89,7 +89,7 @@ export const DESTINOS: readonly DestinoOption[] = [
     id: 'buenos-aires',
     label: 'Buenos Aires',
     en: 'in Buenos Aires, Argentina, immersed in an unmistakable, lively porteño atmosphere with authentic urban architecture and warm travel-postcard lighting',
-    imageSrc: '/destinos/buenos-aires.jpg',
+    imageSrc: '/destinos/buenos-aires.webp',
     icon: Building2,
     variantes: [
       {
@@ -106,7 +106,7 @@ export const DESTINOS: readonly DestinoOption[] = [
     id: 'bariloche',
     label: 'Bariloche',
     en: 'in Bariloche, Argentina, surrounded by recognizable northern Patagonian mountain scenery under crisp natural light',
-    imageSrc: '/destinos/bariloche.jpg',
+    imageSrc: '/destinos/bariloche.webp',
     icon: MountainSnow,
     variantes: [
       {
@@ -128,7 +128,7 @@ export const DESTINOS: readonly DestinoOption[] = [
     id: 'humahuaca',
     label: 'Quebrada de Humahuaca',
     en: 'in the Quebrada de Humahuaca in Jujuy, Argentina, surrounded by dramatic multicolored Andean hills, sunlit adobe textures and a clear high-altitude sky',
-    imageSrc: '/destinos/quebrada.jpg',
+    imageSrc: '/destinos/quebrada.webp',
     icon: Compass,
     variantes: [
       {
@@ -144,7 +144,7 @@ export const DESTINOS: readonly DestinoOption[] = [
     id: 'ushuaia',
     label: 'Ushuaia',
     en: 'at the end of the world near Ushuaia, Argentina, with the Beagle Channel, snow-capped mountains, windswept Fuegian coast and cold luminous southern light',
-    imageSrc: '/destinos/ushuaia.jpg',
+    imageSrc: '/destinos/ushuaia.webp',
     icon: MapPinned,
     variantes: [
       {
@@ -164,7 +164,7 @@ export const DESTINOS: readonly DestinoOption[] = [
     id: 'mendoza',
     label: 'Mendoza',
     en: 'in Mendoza, Argentina, with the sunlit Andes rising behind orderly vineyards and silvery-green olive groves, creating a distinctive Cuyo travel setting and a warm, premium tourism atmosphere',
-    imageSrc: '/destinos/mendoza.jpg',
+    imageSrc: '/destinos/mendoza.webp',
     icon: Grape,
     variantes: [
       {
@@ -185,7 +185,7 @@ export const DESTINOS: readonly DestinoOption[] = [
     id: 'cordoba',
     label: 'Córdoba',
     en: 'in Córdoba, Argentina, surrounded by the green Córdoba sierras near Villa Carlos Paz, with clear mountain rivers and a scenic waterfall visible in the landscape under bright natural light',
-    imageSrc: '/destinos/cordoba.jpg',
+    imageSrc: '/destinos/cordoba.webp',
     icon: Mountain,
     variantes: [
       {
