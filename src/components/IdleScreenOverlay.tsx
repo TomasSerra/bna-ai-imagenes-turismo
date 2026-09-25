@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from 'react';
-import { Hand } from 'lucide-react';
 
 const IDLE_MS = 3 * 60 * 1000;
 const ACTIVITY_EVENTS = ['mousemove', 'mousedown', 'keydown', 'touchstart', 'wheel'] as const;
@@ -46,22 +45,15 @@ export function IdleScreenOverlay() {
   return (
     <button
       type="button"
-      aria-label="Continuar experiencia"
-      className="fixed inset-0 z-[9999] h-dvh w-dvw overflow-hidden bg-[url('/bg-home.png')] bg-cover bg-center bg-no-repeat text-white"
+      aria-label="Salir del salvapantallas y continuar la experiencia"
+      className="fixed inset-0 z-[9999] h-dvh w-dvw overflow-hidden bg-black"
       onContextMenu={(event) => event.preventDefault()}
     >
-      <span className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,47,91,0.72),rgba(0,31,65,0.24)_45%,rgba(0,23,48,0.82))]" />
-      <span className="relative flex h-full w-full flex-col items-center justify-between px-8 pb-[8dvh] pt-[4dvh]">
-        <img
-          src="/logo-bna.png"
-          alt="Banco Nación"
-          className="w-[min(72vw,400px)] max-sm:w-[38vw] drop-shadow-xl"
-        />
-        <span className="flex w-[82%] max-w-2xl items-center justify-center gap-4 rounded-full border-2 border-white bg-white px-10 py-6 text-4xl font-kievit-black text-[#003b70] shadow-2xl">
-          <Hand className="size-9" />
-          Tocá para comenzar
-        </span>
-      </span>
+      <img
+        src="/screen-save.webp"
+        alt=""
+        className="h-full w-full object-cover"
+      />
     </button>
   );
 }
